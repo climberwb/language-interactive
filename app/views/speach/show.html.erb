@@ -1,0 +1,9 @@
+<h1>speach#show</h1>
+<div id="sourceText"></div>
+<div id="translation"></div>
+
+     <script>
+      function translateText(response) {
+        document.getElementById("translation").innerHTML += "<br>" + response.data.translations[0].translatedText;
+      }
+    </script>
