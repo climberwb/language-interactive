@@ -36,7 +36,11 @@ $( document ).ready(function() {
       // to avoid misuage by other party.
       //
      //alert( );
-      var key = '';
+     // alert(<% ENV['GOOGLE_TRANSLATE_KEY']%>);
+
+
+      var key = "<%= ENV['GOOGLE_TRANSLATE_KEY']%>"
+
       var source = 'https://www.googleapis.com/language/translate/v2?key='+key+'&source=en&target=es&callback=translateText&q=' + sourceText;
       newScript.src = source;
 
