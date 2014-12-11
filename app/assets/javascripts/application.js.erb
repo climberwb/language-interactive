@@ -35,7 +35,9 @@ $( document ).ready(function() {
       // Restrict your key to designated domains or use a proxy to hide your key
       // to avoid misuage by other party.
       //
-      var source = 'https://www.googleapis.com/language/translate/v2?key=API-KEY&source=en&target=te&callback=translateText&q=' + sourceText;
+     //alert( );
+      var key = '';
+      var source = 'https://www.googleapis.com/language/translate/v2?key='+key+'&source=en&target=es&callback=translateText&q=' + sourceText;
       newScript.src = source;
 
       // When we add this script to the head, the request is sent off.
