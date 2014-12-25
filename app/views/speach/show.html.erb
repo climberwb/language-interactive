@@ -5,5 +5,9 @@
      <script>
       function translateText(response) {
         document.getElementById("translation").innerHTML += "<br>" + response.data.translations[0].translatedText;
+
+        var msg = new SpeechSynthesisUtterance(response.data.translations[0].translatedText.replace(/&quot;/g,'"'));
+        window.speechSynthesis.speak(msg);
+
       }
     </script>

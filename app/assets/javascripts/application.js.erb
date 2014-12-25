@@ -26,17 +26,16 @@ $( document ).ready(function() {
       // event.results[0][0].transcript
        $('#sourceText').append( "<p>"+JSON.stringify(event.results[a][0].transcript) +"</p>");
        // every time a phrase is said event.results[1][0].transcript increase first [] by one
-       a++;
+       
 
        var newScript = document.createElement('script');
        newScript.type = 'text/javascript';
-       var sourceText = escape(document.getElementById("sourceText").innerHTML);
+       var sourceText = escape(document.getElementById("sourceText").getElementsByTagName("p")[a].textContent.replace(/&quot;/g,'"'));
+       a++;
       // WARNING: be aware that YOUR-API-KEY inside html is viewable by all your users.
       // Restrict your key to designated domains or use a proxy to hide your key
       // to avoid misuage by other party.
       //
-     //alert( );
-     // alert(<% ENV['GOOGLE_TRANSLATE_KEY']%>);
 
 
       var key = "<%= ENV['GOOGLE_TRANSLATE_KEY']%>"
@@ -48,4 +47,6 @@ $( document ).ready(function() {
       document.getElementsByTagName('head')[0].appendChild(newScript);
     }
     recognition.start();
+
+    
   });
