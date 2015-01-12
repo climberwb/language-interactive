@@ -26,7 +26,7 @@ $( document ).ready(function() {
       // event.results[0][0].transcript
        $('#sourceText').append( "<p>"+JSON.stringify(event.results[a][0].transcript) +"</p>");
        // every time a phrase is said event.results[1][0].transcript increase first [] by one
-       
+
 
        var newScript = document.createElement('script');
        newScript.type = 'text/javascript';
@@ -40,13 +40,13 @@ $( document ).ready(function() {
 
       var key = "<%= ENV['GOOGLE_TRANSLATE_KEY']%>"
 
-      var source = 'https://www.googleapis.com/language/translate/v2?key='+key+'&source=en&target=es&callback=translateText&q=' + sourceText;
-      newScript.src = source;
+          var source = 'https://www.googleapis.com/language/translate/v2?key='+key+'&source=en&target=es&callback=translateText&q=' + sourceText;
+          newScript.src = source;
 
-      // When we add this script to the head, the request is sent off.
-      document.getElementsByTagName('head')[0].appendChild(newScript);
+          // When we add this script to the head, the request is sent off.
+          document.getElementsByTagName('head')[0].appendChild(newScript);
     }
     recognition.start();
 
-    
+
   });
