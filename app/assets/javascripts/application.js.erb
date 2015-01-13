@@ -14,9 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+var b = 0;
 $( document ).ready(function() {
-  $( "body > select " ).click(function() {
-       alert($(this).val());
+  $( "body > select" )[0].click(function() {    
+   
+       alert($('select').val());
+
         var recognition = new webkitSpeechRecognition();
         recognition.continuous = true;
         //recognition.interimResults = true;
@@ -38,18 +41,19 @@ $( document ).ready(function() {
           // Restrict your key to designated domains or use a proxy to hide your key
           // to avoid misuage by other party.
           //
+          
+              var select = $(this).val();
+              var key = "<%= ENV['GOOGLE_TRANSLATE_KEY']%>"
 
-          var select = $(this).val();
-          var key = "<%= ENV['GOOGLE_TRANSLATE_KEY']%>"
+                  var source = 'https://www.googleapis.com/language/translate/v2?key='+key+'&source=en&target=es&callback=translateText&q=' + sourceText;
+                  newScript.src = source;
 
-              var source = 'https://www.googleapis.com/language/translate/v2?key='+key+'&source=en&target=es&callback=translateText&q=' + sourceText;
-              newScript.src = source;
+                  // When we add this script to the head, the request is sent off.
+                  document.getElementsByTagName('head')[0].appendChild(newScript);
 
-              // When we add this script to the head, the request is sent off.
-              document.getElementsByTagName('head')[0].appendChild(newScript);
-        }
-        recognition.start();
+            }
+            recognition.start();
+            
       });
-
 
   });
